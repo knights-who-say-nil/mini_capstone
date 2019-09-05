@@ -31,8 +31,11 @@ class Api::ProductsController < ApplicationController
     @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
 
-    @product.save
-    render 'show.json.jb'
+    if @product.save
+      render 'show.json.jb'
+    else
+      render json: { errors: @product.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
