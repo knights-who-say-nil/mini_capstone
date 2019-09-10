@@ -7,6 +7,10 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :image_url, presence: true
 
+  def supplier
+    Supplier.find_by(id: self.supplier_id)
+  end
+
   def is_discounted?
     price < 60
   end

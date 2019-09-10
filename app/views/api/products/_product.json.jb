@@ -6,5 +6,6 @@
   total: product.total,
   description: product.description,
   image_url: product.image_url,
-  is_discounted: product.is_discounted?
+  is_discounted: product.is_discounted?,
+  supplier_name: product.supplier.name
 }
