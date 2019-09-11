@@ -7,5 +7,6 @@
   description: product.description,
   image_url: product.image_url,
   is_discounted: product.is_discounted?,
-  supplier_name: product.supplier.name
+  supplier_name: product.supplier.name,
+  supplier: (render partial: "api/suppliers/supplier.json.jb", locals: {supplier: product.supplier})
 }
