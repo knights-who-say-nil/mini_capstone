@@ -1,17 +1,12 @@
 class Api::OrdersController < ApplicationController
+  before_action :authenticate_user, only: [:index, :create]
+
   def index
-    if current_user
-      @orders = current_user.orders
-      render 'index.json.jb'
-    else
-      render json: []
-    end
+    @orders = current_user.orders
+    render 'index.json.jb'
   end
 
   def create
-    # current_user
-    # params hash {"product_id"=>"2", "quantity"=>"3"}
-
     product = Product.find(params[:product_id])
     quantity = params[:quantity].to_i
 
